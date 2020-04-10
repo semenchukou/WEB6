@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+    http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+
+    <persistence-unit name="Test_Local" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>model.entities.Worker</class>
+        <class>model.entities.Tenant</class>
+        <class>model.entities.Request</class>
+        <class>model.entities.WorkPlan</class>
+        <properties>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/> <!-- DB Driver -->
+            <property name="hibernate.connection.url" value="jdbc:postgresql://ec2-54-228-251-117.eu-west-1.compute.amazonaws.com:5432/d84sv3g58bbk5o?sslmode=require"/> <!-- BD Mane -->
+            <property name="hibernate.connection.username" value="mkwvismbnrscqf"/> <!-- DB User -->
+            <property name="hibernate.connection.password" value="209ff291dba581a38385bc4b0b63fd9d7134e659a5e69d1aec5f5adfef695ba9"/> <!-- DB Password -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- create / create-drop / update -->
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="false"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
+        </properties>
+    </persistence-unit>
+</persistence>
