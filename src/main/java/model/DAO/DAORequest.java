@@ -3,21 +3,12 @@ package model.DAO;
 import model.entities.Request;
 import model.entities.Request_;
 import model.exceptions.DAOException;
-import model.exceptions.JDBCConnectionException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Transient;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import javax.transaction.Transactional;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 /**
  * DAORequest class.
@@ -177,6 +168,37 @@ public class DAORequest extends DAO {
             entityManager.getTransaction().begin();
             entityManager.createQuery(delete).executeUpdate();
             entityManager.getTransaction().begin();
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive())
+                transaction.rollback();
+            throw new DAOException("Failed while deleting", e);
+        } finally {
+            if (entityManager != null && entityManager.isOpen())
+                entityManager.close();
+        }
+    }
+
+    public void updateRequest(Request request, int id) throws DAOException {
+        EntityManager entityManager = null;
+        EntityTransaction transaction = null;
+
+        try {
+            entityManager = getEntityManagerFactory().createEntityManager();
+            CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+
+            CriteriaUpdate<Request> update = cb.
+                    createCriteriaUpdate(Request.class);
+            Root e = update.from(Request.class);
+            update.set("job_type", request.getJob_type());
+            update.set("job_descr", request.getJob_descr());
+            update.set("to_date", request.getTo_date());
+            update.set("tenant_id", request.getTenant_id());
+            update.set("status", request.getStatus());
+            update.where(cb.equal(e.get("request_id"), id));
+
+            entityManager.getTransaction().begin();
+            entityManager.createQuery(update).executeUpdate();
+            entityManager.getTransaction().commit();
         } catch (Exception e) {
             if (transaction != null && transaction.isActive())
                 transaction.rollback();

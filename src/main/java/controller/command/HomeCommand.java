@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class HomeCommand implements Command {
@@ -37,6 +38,8 @@ public class HomeCommand implements Command {
                     dispatcher.forward(request, response);
                 } else {
                     CookieUtils.deleteUserCookie(response);
+                    HttpSession session = request.getSession();
+                    session.setAttribute("loginedUser", null);
                     RequestDispatcher dispatcher = servletContext.getRequestDispatcher("/view/homeView.jsp");
                     dispatcher.forward(request, response);
                 }

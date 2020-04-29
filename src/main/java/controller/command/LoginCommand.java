@@ -40,8 +40,8 @@ public class LoginCommand implements Command {
             throws ServletException, IOException {
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
-        String rememberMeStr = request.getParameter("rememberMe");
-        boolean remember = "Y".equals(rememberMeStr);
+        //String rememberMeStr = request.getParameter("rememberMe");
+        boolean remember = true;
 
         if(request.getParameter("bt").equals("Guest")) {
             System.out.println("i'm guest");

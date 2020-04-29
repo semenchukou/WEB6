@@ -7,12 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="lab5" />
+        <module name="lab7" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="lab5" options="-processor org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor" />
+      <module name="lab7" options="-processor org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor" />
     </option>
   </component>
 </project>

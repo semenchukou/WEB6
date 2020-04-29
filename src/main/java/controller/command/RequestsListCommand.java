@@ -29,6 +29,7 @@ public class RequestsListCommand implements Command {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         User loginedUser = (User) session.getAttribute("loginedUser");
+        System.out.println("user in requests tag = " + loginedUser);
         if (loginedUser == null) {
             String errorString = "You need to log in to perform this action.";
             request.setAttribute("errorString", errorString);

@@ -100,7 +100,7 @@ public class Request {
         this.to_date = toDate;
     }
 
-    public int getTenant() {
+    public int getTenant_id() {
         return tenant_id;
     }
 

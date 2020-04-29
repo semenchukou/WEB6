@@ -26,7 +26,9 @@ public class MainServlet extends HttpServlet {
         Command[] commands = {new HomeCommand(), new WorkersListCommand(),
                                 new RequestsListCommand(), new OutdatedRequestsListCommand(),
                                 new DeclineRequestCommand(), new SetWorkerCommand(), new LoginCommand(),
-                                new UserInfoCommand(), new RegisterCommand()};
+                                new UserInfoCommand(), new RegisterCommand(),
+                                new RequestsListWithTagCommand(), new EditRequestCommand(),
+                                new EditChosenRequestCommand()};
         for (Command c : commands) {
             this.commands.put(c.getPattern(), c);
         }
