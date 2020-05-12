@@ -28,7 +28,7 @@ public class MainServlet extends HttpServlet {
                                 new DeclineRequestCommand(), new SetWorkerCommand(), new LoginCommand(),
                                 new UserInfoCommand(), new RegisterCommand(),
                                 new RequestsListWithTagCommand(), new EditRequestCommand(),
-                                new EditChosenRequestCommand()};
+                                new EditChosenRequestCommand(), new ChatCommand()};
         for (Command c : commands) {
             this.commands.put(c.getPattern(), c);
         }

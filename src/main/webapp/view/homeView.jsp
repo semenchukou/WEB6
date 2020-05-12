@@ -45,6 +45,9 @@
             <li>
                 <a href="${pageContext.request.contextPath}?command=userInfo"><fmt:message key="command.userInfo"/></a>
             </li>
+            <li>
+                <a href="${pageContext.request.contextPath}?command=chat">Chat</a>
+            </li>
 
         </ul>
     </body>

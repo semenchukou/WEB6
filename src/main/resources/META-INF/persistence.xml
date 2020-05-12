@@ -12,14 +12,14 @@
         <class>model.entities.Request</class>
         <class>model.entities.WorkPlan</class>
         <properties>
-            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/> <!-- DB Driver -->
-            <property name="hibernate.connection.url" value="jdbc:postgresql://ec2-54-228-251-117.eu-west-1.compute.amazonaws.com:5432/d84sv3g58bbk5o?sslmode=require"/> <!-- BD Mane -->
-            <property name="hibernate.connection.username" value="mkwvismbnrscqf"/> <!-- DB User -->
-            <property name="hibernate.connection.password" value="209ff291dba581a38385bc4b0b63fd9d7134e659a5e69d1aec5f5adfef695ba9"/> <!-- DB Password -->
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/> <!-- DB Driver -->
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost/mydb?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useSSL=false"/> <!-- BD Mane -->
+            <property name="hibernate.connection.username" value="root"/> <!-- DB User -->
+            <property name="hibernate.connection.password" value="12345"/> <!-- DB Password -->
             <property name="hibernate.hbm2ddl.auto" value="update"/> <!-- create / create-drop / update -->
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.format_sql" value="false"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL94Dialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
         </properties>
     </persistence-unit>
 </persistence>
